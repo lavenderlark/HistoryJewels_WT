@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exquisite Jewels of History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            background-color: #f7f2e8;
+            background-image: url('parchment-texture.jpg');
+            background-size: cover;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1F2544, #3B3661);
+            color: #FFD0EC;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 3.5em;
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+            color: #FFD0EC;
+            animation: fadeInDown 2s ease;
+        }
+
+        header::after {
+            content: 'A journey through time and treasures';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2em;
+            color: #FFD0EC;
+            background-color: #1F2544;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .map-container {
+            position: relative;
+            max-width: 100%;
+            margin: 30px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 2px solid #FFD0EC;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .map-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .map-button {
+            position: absolute;
+            background: url('pin1.png') no-repeat center;
+            background-size: contain;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.3s;
+            width: 2.5vw; /* Responsive width */
+            height: 4vw; /* Responsive height */
+        }
+
+        .map-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Button positions for all continents */
+        #australia {
+            top: 63%;
+            left: 77%;
+        }
+
+        #europe {
+            top: 32%;
+            left: 47%;
+        }
+
+        #japan {
+            top: 38%;
+            left: 78%;
+        }
+
+        #africa {
+            top: 52%;
+            left: 50%;
+        }
+
+        #north-america {
+            top: 33%;
+            left: 20%;
+        }
+
+        #south-america {
+            top: 62%;
+            left: 30%;
+        }
+
+        #india {
+            top: 46%;
+            left: 63%;
+        }
+
+        #china {
+            top: 34%;
+            left: 70%;
+        }
+
+        #russia {
+            top: 27%;
+            left: 55%;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: rgba(31, 37, 68, 0.9);
+            color: #FFD0EC;
+            overflow-x: hidden;
+            overflow-y: auto; /* Allow vertical scrolling */
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1000;
+            max-height: 100vh; /* Ensure the sidebar doesn't exceed the viewport height */
+        }
+
+        .sidebar-content {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .sidebar img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar h2 {
+            text-transform: uppercase;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .sidebar a {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: #FFD0EC;
+            color: #1F2544;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #fff;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        footer {
+            background-color: #1F2544;
+            color: #FFD0EC;
+            text-align: center;
+            padding: 15px;
+            margin-top: 50px;
+            font-size: 1.1em;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Exquisite Jewels of History</h1>
+    </header>
+
+    <div class="container">
+        <div class="map-container">
+            <img src="world map.jpg" alt="World Map">
+            <!-- Buttons for Clickable Areas -->
+            <button id="australia" class="map-button" onclick="openSidebar('australia')"></button>
+            <button id="europe" class="map-button" onclick="openSidebar('europe')"></button>
+            <button id="japan" class="map-button" onclick="openSidebar('japan')"></button>
+            <button id="africa" class="map-button" onclick="openSidebar('africa')"></button>
+            <button id="north-america" class="map-button" onclick="openSidebar('north-america')"></button>
+            <button id="south-america" class="map-button" onclick="openSidebar('south-america')"></button>
+            <button id="india" class="map-button" onclick="openSidebar('india')"></button>
+            <button id="china" class="map-button" onclick="openSidebar('china')"></button>
+            <button id="russia" class="map-button" onclick="openSidebar('russia')"></button>
+        </div>
+    </div>
+
+    <!-- Sidebar for Jewellery Info -->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+        <div class="sidebar-content" id="sidebar-content">
+            <!-- Dynamic content will be injected here -->
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Exquisite Jewels of History. A journey through time and treasures.</p>
+    </footer>
+    <script>
+        function openSidebar(region) {
+            const sidebar = document.getElementById("sidebar");
+            const content = document.getElementById("sidebar-content");
+    
+            let infoContent = '';
+            if (region === 'australia') {
+                infoContent = `
+                    <img src="Opal.jpg" alt="Australian Opal Necklace">
+                    <h2>Australian Opal Jewellery</h2>
+                    <p>In ancient Australia, the opal was regarded as a magical gemstone, believed to contain the essence of rainbows and offer protection. This semi-precious stone became part of history, known for its dazzling colors that change with light.</p>
+                    <a href="https://www.qreport.com.au/blog/exploring-the-rich-history-of-australian-opals">View More</a>
+                `;
+            } else if (region === 'europe') {
+                infoContent = `
+                    <img src="Eurodia.jpg" alt="European Diamond Ring">
+                    <h2>European Diamond Jewellery</h2>
+                    <p>European royalty, especially during the Renaissance, adorned themselves with diamonds, symbolizing power and status. The brilliant-cut diamond was perfected in Europe, where it played a role in royal engagements and coronations.</p>
+                    <a href="https://ourosjewels.com/blogs/lab-grown-diamonds/old-european-cut-diamond-study#:~:text=Old%20European%20cut%20diamonds%20were,due%20to%20its%20exquisite%20appearance.">View More</a>
+                `;
+            } else if (region === 'japan') {
+                infoContent = `
+                    <img src="Akoya.jpg" alt="Japanese Akoya Bracelet">
+                    <h2>Japanese Akoya Jewellery</h2>
+                    <p>The art of pearl cultivation was revolutionized in Japan in the late 19th century, leading to the production of exquisite Akoya pearls. These pearls, associated with purity, were highly prized in Japan’s imperial courts.</p>
+                    <a href="https://www.gemsociety.org/article/akoya-pearls/">View More</a>
+                `;
+            } else if (region === 'africa') {
+                infoContent = `
+                    <img src="Afrbead.jpg" alt="African Gold">
+                    <h2>African Beaded Jewellery</h2>
+                    <p>African beaded jewelry, rich in history, symbolizes status, wealth, and spirituality. Its vibrant colors and intricate patterns reflect African tradition, identity, and cultural heritage across generations.</p>
+                    <a href="https://africa-gold-jewelry.com/">View More</a>
+                `;
+            } else if (region === 'north-america') {
+                infoContent = `
+                    <img src="north-american-turquoise.jpg" alt="North American Turquoise">
+                    <h2>North American Turquoise Jewellery</h2>
+                    <p>Turquoise was highly valued by Native American cultures, especially in the Southwest. It was believed to bring protection and strength, with the gemstone being a central element in their jewellery making traditions.</p>
+                    <a href="https://turquoisevillage.com/">View More</a>
+                `;
+            } else if (region === 'south-america') {
+                infoContent = `
+                    <img src="south-american-emerald.jpg" alt="South American Emerald">
+                    <h2>South American Emerald Jewellery</h2>
+                    <p>Colombian emeralds are among the most famous in the world, prized for their vibrant green color. These gemstones have been a symbol of luxury and status since the times of the Incas and continue to be highly sought after.</p>
+                    <a href="https://www.rareemeralds.com/">View More</a>
+                `;
+            } else if (region === 'india') {
+                infoContent = `
+                    <img src="indian-diamond.jpg" alt="Indian Diamond Necklace">
+                    <h2>Indian Diamond Jewellery</h2>
+                    <p>Indian jewelry is renowned for its intricate designs and the use of high-quality gemstones. Indian diamonds have been cherished for their brilliance and have a rich history of adornment in royal and ceremonial pieces.</p>
+                    <a href="https://www.indianjewelrydesigns.com/">View More</a>
+                `;
+            } else if (region === 'china') {
+                infoContent = `
+                    <img src="chinese-jade.jpg" alt="Chinese Jade Pendant">
+                    <h2>Chinese Jade Jewellery</h2>
+                    <p>Jade has been an important part of Chinese culture for thousands of years, symbolizing purity, grace, and nobility. Chinese jade jewellery is known for its intricate carvings and deep green hues.</p>
+                    <a href="https://www.chinesejade.com/">View More</a>
+                `;
+            } else if (region === 'russia') {
+                infoContent = `
+                    <img src="russian-diamond.jpg" alt="Russian Diamond Necklace">
+                    <h2>Russian Diamond Jewellery</h2>
+                    <p>Russian diamond mines have produced some of the world's most famous diamonds. Russian jewelry is known for its exquisite craftsmanship and the use of high-quality gemstones, reflecting the opulence of the Russian aristocracy.</p>
+                    <a href="https://russianjewelry.com/">View More</a>
+                `;
+            }
+    
+            content.innerHTML = infoContent;
+            sidebar.style.width = "400px"; // Set width for the sidebar
+        }
+    
+        function closeSidebar() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+    </script>
+    
+  
+</body>
+
+</html>
