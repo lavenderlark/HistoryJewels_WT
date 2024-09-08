@@ -180,15 +180,26 @@
         }
 
         .sidebar a:hover {
-            background-color: #fff;
+            background-color:#434d7f;
+            color:#f8bbdf;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); 
+            transform: scale(1.05); 
+            filter: brightness(1.2);
+            transition: all 0.3s ease;
+
         }
 
         .sidebar .closebtn {
             position: absolute;
             top: 20px;
             right: 25px;
-            font-size: 36px;
+            font-size: 25px;
             margin-left: 50px;
+            transition: transform 0.2s ease; 
+        }
+
+        .sidebar .closebtn:hover {
+            transform: scale(1.2); 
         }
 
         footer {
@@ -279,50 +290,50 @@
                 `;
             } else if (region === 'africa') {
                 infoContent = `
-                    <img src="Afrbead.jpg" alt="African Gold">
-                    <h2>African Beaded Jewellery</h2>
-                    <p>African beaded jewelry, rich in history, symbolizes status, wealth, and spirituality. Its vibrant colors and intricate patterns reflect African tradition, identity, and cultural heritage across generations.</p>
-                    <a href="https://africa-gold-jewelry.com/">View More</a>
+                    <img src="Afrgold.jpg" alt="African Gold">
+                    <h2>African Gold Jewellery</h2>
+                    <p>Africa has been a rich source of gold for centuries, from the ancient Egyptian pharaohs to modern times. The beauty of African gold jewellery lies in its intricate designs, symbolizing wealth, power, and spirituality.</p>
+                    <a href="https://alromaizan.com/blog/african-gold-designs-an-artistic-tapestry-of-tradition">View More</a>
                 `;
             } else if (region === 'north-america') {
                 infoContent = `
-                    <img src="north-american-turquoise.jpg" alt="North American Turquoise">
+                    <img src="Turq.jpg" alt="North American Turquoise">
                     <h2>North American Turquoise Jewellery</h2>
                     <p>Turquoise was highly valued by Native American cultures, especially in the Southwest. It was believed to bring protection and strength, with the gemstone being a central element in their jewellery making traditions.</p>
-                    <a href="https://turquoisevillage.com/">View More</a>
+                    <a href="https://www.southwestsilvergallery.com/history-of-turquoise/">View More</a>
                 `;
             } else if (region === 'south-america') {
                 infoContent = `
-                    <img src="south-american-emerald.jpg" alt="South American Emerald">
+                    <img src="Emerald.jpeg" alt="South American Emerald">
                     <h2>South American Emerald Jewellery</h2>
                     <p>Colombian emeralds are among the most famous in the world, prized for their vibrant green color. These gemstones have been a symbol of luxury and status since the times of the Incas and continue to be highly sought after.</p>
-                    <a href="https://www.rareemeralds.com/">View More</a>
+                    <a href="https://www.sothebys.com/en/articles/colombian-emeralds-a-detailed-guide-for-collectors-and-enthusiasts#:~:text=Historical%20geological%20data%20shows%20that,for%20over%20half%20a%20century./">View More</a>
                 `;
             } else if (region === 'india') {
                 infoContent = `
-                    <img src="indian-diamond.jpg" alt="Indian Diamond Necklace">
-                    <h2>Indian Diamond Jewellery</h2>
-                    <p>Indian jewelry is renowned for its intricate designs and the use of high-quality gemstones. Indian diamonds have been cherished for their brilliance and have a rich history of adornment in royal and ceremonial pieces.</p>
-                    <a href="https://www.indianjewelrydesigns.com/">View More</a>
+                    <img src="Kundan.jpg" alt="Indian Diamond Necklace">
+                    <h2>Indian Kundan Jewellery</h2>
+                    <p>Indian Kundan jewellery is renowned for its intricate designs and the use of high-quality gemstones. It has been cherished for it's brilliance and has a rich history of adornment in royal and ceremonial pieces.</p>
+                    <a href="https://www.vogue.in/fashion/content/kundan-jewellery-history-technique-sunita-shekhawat-interview">View More</a>
                 `;
             } else if (region === 'china') {
                 infoContent = `
-                    <img src="chinese-jade.jpg" alt="Chinese Jade Pendant">
+                    <img src="Jade.jpg" alt="Chinese Jade Pendant">
                     <h2>Chinese Jade Jewellery</h2>
                     <p>Jade has been an important part of Chinese culture for thousands of years, symbolizing purity, grace, and nobility. Chinese jade jewellery is known for its intricate carvings and deep green hues.</p>
-                    <a href="https://www.chinesejade.com/">View More</a>
+                    <a href="https://www.britannica.com/art/Chinese-jade">View More</a>
                 `;
             } else if (region === 'russia') {
                 infoContent = `
-                    <img src="russian-diamond.jpg" alt="Russian Diamond Necklace">
-                    <h2>Russian Diamond Jewellery</h2>
-                    <p>Russian diamond mines have produced some of the world's most famous diamonds. Russian jewelry is known for its exquisite craftsmanship and the use of high-quality gemstones, reflecting the opulence of the Russian aristocracy.</p>
-                    <a href="https://russianjewelry.com/">View More</a>
+                    <img src="Amber.jpg" alt="Russian Diamond Necklace">
+                    <h2>Russian Amber Jewellery</h2>
+                    <p>Russian amber, often called "the gold of the north," has been treasured for its beauty and cultural significance. Mined in the Baltic, it was believed to have healing powers and has been expertly crafted into stunning jewelry for centuries.</p>
+                    <a href="Russian amber, often called "the gold of the north," has been treasured for its beauty and cultural significance. Mined in the Baltic, it was believed to have healing powers and has been expertly crafted into stunning jewelry for centuries.">View More</a>
                 `;
             }
     
             content.innerHTML = infoContent;
-            sidebar.style.width = "400px"; // Set width for the sidebar
+            sidebar.style.width = "400px"; 
         }
     
         function closeSidebar() {
